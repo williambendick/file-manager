@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/Scripts/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="/CSS/main.css"/>
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/jquery-ui.min.js"></script>
+    <script src="/Scripts/knockout-3.4.2.js"></script>
+    <script src="/Scripts/main.js"></script>
+</head>
+
+<body>
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;<label class="button" id="open-directory-browser">Open File Manager</label>
+
+    <form>
+        <div id="directory-browser-dialog" title="File Manager" class="dialog-not-visible" data-bind="css: status == 'ready' ? 'dialog-visible' : 'dialog-not-visible'">
+            <div style="height: 30px;">
+                <div style="float: left; font-weight: normal;">
+                    <input type="text" style="height: 18px;" data-bind="textInput: searchText, event: { keypress: search }" />
+                    <label class="button" data-bind="click: search">Search</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="button">
+                        <input type="file" multiple="multiple" data-bind="event: { change: function () { upload($element.files) } }" />Upload
+                    </label>
+                    <label class="button" data-bind="click: function () { openTransferDialog('Move') }">Move</label>
+                    <label class="button" data-bind="click: function () { openTransferDialog('Copy') }">Copy</label>
+                    <label class="button" data-bind="click: function () { openDeleteDialog('Delete') }">Delete</label>
+                </div>
+                <div style="float: right; padding-right: 6px; width: 40%; text-align: right;" data-bind="text: userMessage"></div>
+            </div>
+
+            <table class="directory-items">
+                <thead>
+                    <tr>
+                        <th colspan="4">Current path:&nbsp;&nbsp;
+                        <span class="path-controls" data-bind="foreach: currentPath">
+                            <!--ko if: $index() != 0-->
+                            ><!--/ko-->
+                            <span class="link" data-bind="text: $data, click: function () { $parent.pathControlItem($index()) }"></span>
+                        </span>
+                            <span style="float: right;" data-bind="text: directoryInfo"></span>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody data-bind="foreach: dirItems">
+                    <tr>
+                        <td style="width: 2%;">
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $root.selectionObject.sources" /></td>
+                        <td style="width: 4%;"><span data-bind="css: Type == 'directory' ? 'folder-icon' : ''"></span></td>
+                        <td style="width: 85%;">
+                            <span class="link" data-bind="text: IsSearch ? ItemPath + ':' : '',
+                            click: IsSearch ? function (data, event) { $parent.searchPathItem(data, event) } : ''"></span>
+                            <span data-bind="text: IsSearch ? '&nbsp;' : ''"></span>
+                            <a data-bind="text: Name,
+                            click: Type == 'directory' ? function (data, event) { $parent.directoryItem(data, event) } : '',
+                            attr: { href: Type == 'directory' ? '' : $parent.fileLink(Name, ItemPath) }"></a>
+                        </td>
+                        <td style="width: 9%;" data-bind="text: Type == 'file' ? Size : ''"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="delete-dialog" title="Delete Items" class="dialog-not-visible" data-bind="css: status == 'ready' ? 'dialog-visible' : 'dialog-not-visible'">
+                <p style="text-align: center;">
+                    Are you sure you want to delete the selected items?<br />
+                    <br />
+                    <label class="button" data-bind="click: deleteItems">Delete</label>
+                    <label class="button" data-bind="click: closeDeleteDialog">Cancel</label>
+                </p>
+            </div>
+
+        </div>
+    </form>
+
+    <div id="transfer-dialog" title="Transfer Items" class="dialog-not-visible" data-bind="css: status == 'ready' ? 'dialog-visible' : 'dialog-not-visible'">
+        <div style="height: 30px;">
+            <span style="float: left; padding-right: 6px; width: 75%;" data-bind="text: userMessage"></span>
+            <span style="float: right; font-weight: normal;">
+                <label class="button" data-bind="text: transferType() + ' Items', click: transfer"></label>
+                <label class="button" data-bind="click: closeTransferDialog">Close</label>
+            </span>
+        </div>
+
+        <table class="directory-items">
+            <thead>
+                <tr>
+                    <th colspan="2">Current path:&nbsp;&nbsp;
+                        <span class="path-controls" data-bind="foreach: currentPath">
+                            <!--ko if: $index() != 0-->
+                            ><!--/ko-->
+                            <span class="link" data-bind="text: $data, click: function () { $parent.pathControlItem($index()) }"></span>
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody data-bind="foreach: dirItems">
+                <tr>
+                    <td style="width: 4%;"><span data-bind="css: Type == 'directory' ? 'folder-icon' : ''"></span></td>
+                    <td style="width: 96%;">
+                        <a class="link" data-bind="text: Name,
+                        click: function (data, event) { $parent.directoryItem(data, event) }"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+﻿body { font-family: "Trebuchet MS", Arial; font-size: 12px; }
+input[type="file"] { display: none; }
+a:visited { color: blue; }
+.button { background-color: #ccc; border: 1px solid #ccc; display: inline-block; padding: 4px 12px; cursor: pointer; }
+.link { text-decoration: underline; cursor: pointer; color: blue; }
+.path-controls { color: blue; }
+.folder-icon { height: 20px; width: 20px; background-color: #FCDD7C; display: block; }
+.dialog-visible { display: block; }
+.dialog-not-visible { display: none; }
+.dialog-close-not-visible .ui-dialog-titlebar-close { display: none }
+.ui-widget-content a { color: blue; }
+.directory-items { border: 1px solid #ddd; border-collapse: collapse; width: 100%; }
+.directory-items th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
