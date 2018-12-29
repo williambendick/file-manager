@@ -13,7 +13,9 @@ Clone the repository and build & run with Visual Studio 2017.
 * Use of browser back / forward buttons is supported
 
 ## Screeenshots
-  
+  [manager screenshot](screenshots/manager.png)
+  [transfer screenshot](screenshots/transfer.png)
+  [search screenshot](screenshots/search.png)
   
 ## Usage
 
