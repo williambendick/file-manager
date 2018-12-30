@@ -17,11 +17,11 @@ Clone the repository and build & run with Visual Studio 2017.
   ![transfer screenshot](/screenshots/transfer.PNG?raw=true)
   
 ## Usage
-<ins>__Root Folder__</ins>
+__Root Folder__
 
 A root directory for the api can be set in file-manager/Models/Settings.cs. The directory will be created if it does not already exist.
 
-<ins>__API__</ins>
+__API__
 
 | Method        | Endpoint                                | Usage                                                |
 | :------------ | :-------------------------------------- | :--------------------------------------------------- |
