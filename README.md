@@ -1,5 +1,5 @@
 # File-manager
-File-manager is a simple web API and single page application for browsing and managing directories on a web server. This is the initial version of the project and it should be used in a test environment. 
+File-manager is a simple web API and single page application for browsing and managing directories on a web server.
 
 ## Installation
 Clone the repository and build & run with Visual Studio 2017.
@@ -17,6 +17,9 @@ Clone the repository and build & run with Visual Studio 2017.
   ![transfer screenshot](/screenshots/transfer.PNG?raw=true)
   
 ## Usage
+__Note__
+This is the initial version of this project and it should be used in a test environment. 
+
 __Root Directory__
 
 A root directory for the api can be set in file-manager/Models/Settings.cs. The directory will be created if it does not already exist.
