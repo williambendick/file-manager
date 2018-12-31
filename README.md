@@ -18,6 +18,7 @@ Clone the repository and build & run with Visual Studio 2017.
   
 ## Usage
 __Note__
+
 This is the initial version of this project and it should be used in a test environment. 
 
 __Root Directory__
