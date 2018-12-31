@@ -17,7 +17,6 @@ Clone the repository and build & run with Visual Studio 2017.
   ![transfer screenshot](/screenshots/transfer.PNG?raw=true)
   
 ## Usage
-__Note__
 
 This is the initial version of this project and it should be used in a test environment. 
 
